@@ -1,0 +1,42 @@
+body {
+  background-image: url("rain.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+div.container {
+  background-color: black;
+  border-radius: 10px;
+  margin: 50px auto;
+  padding: 50px;
+  opacity: 80%;
+}
+button.btn.btn-light {
+  display: block;
+  margin: 0 auto;
+  font-weight: 600;
+  font-size: 25px;
+}
+form#enterCity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px;
+}
+input {
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+input.btn.btn-light {
+  margin: 15px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+div.container.text-center {
+  color: white;
+}
