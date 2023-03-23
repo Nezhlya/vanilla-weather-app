@@ -1,27 +1,19 @@
-body {
-  background-image: url("rain.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 div.container {
-  background-color: black;
   border-radius: 10px;
   margin: 50px auto;
   padding: 50px;
-  opacity: 80%;
+  width: 50%;
+  position: absolute;
+  z-index: 2;
+  
 }
-button.btn.btn-light {
-  display: block;
-  margin: 0 auto;
-  font-weight: 600;
-  font-size: 25px;
-}
+
 form#enterCity {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   margin: 30px;
+  justify-content: center;
 }
 input {
   border-radius: 10px;
@@ -38,5 +30,23 @@ input.btn.btn-light {
 }
 
 div.container.text-center {
+  color: black;
+  background-color: white;
+  position: absolute;
+}
+div#map {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  width: 100%;
+}
+p#timeDate {
   color: white;
+  background-color: black;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
 }
