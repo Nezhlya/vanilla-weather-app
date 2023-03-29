@@ -20,13 +20,17 @@ div.container {
   left: 70px;
 }
 ul.data {
+  display: block;
   text-align: center;
   padding: 10px;
+  margin: 10px;
 }
 input.city {
-  margin: 20px;
   font-size: 20px;
 }
 span.units {
   display: inline-block;
+}
+input#src {
+  margin: 20px;
 }
