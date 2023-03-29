@@ -16,6 +16,7 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/ol@v7.2.2/dist/ol.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
     <link rel="stylesheet" href="src/styles.css" />
 
@@ -23,19 +24,41 @@
   </head>
   <body>
     <div class="container">
-      <div class="bg-light border"><p id="timeDate"></p></div>
-      <div class="bg-light border">
-        <form id="enterCity">
-          <input type="text" placeholder="Enter city name" />
-          <input type="submit" value="Search" class="btn btn-light" />
-        </form>
-      </div>
-      <div class="bg-light border">
-        <div class="row">
-          <div class="col">Column</div>
-          <div class="col">Column</div>
-          <div class="col">Column</div>
+      <div class="card" style="width: 18rem">
+        <div class="card-header">
+          <p id="timeDate"></p>
         </div>
+        <ul class="data">
+          <li class="list-group-item">
+            <form id="searchCity">
+              <input type="text" placeholder="Enter city name" class="city" />
+              <input
+                type="submit"
+                value="Search"
+                class="btn btn-dark"
+                id="src"
+              />
+            </form>
+          </li>
+          <li class="list-group-item" id="userCity"></li>
+          <li class="list-group-item">
+            <div id="iconWeather">
+              <img id="icon" src="" alt="" />
+            </div>
+            <span id="temp"><b></b></span>
+            <span class="units" style="display: none">
+              <span id="celsius"><sup>℃/</sup></span
+              ><span id="fahrenheit"><sup>℉</sup></span>
+            </span>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col" id="feels"></div>
+              <div class="col" id="humidity"></div>
+              <div class="col" id="wind"></div>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
 

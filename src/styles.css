@@ -1,52 +1,32 @@
-div.container {
-  border-radius: 10px;
-  margin: 50px auto;
-  padding: 50px;
-  width: 50%;
-  position: absolute;
-  z-index: 2;
-  
-}
-
-form#enterCity {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 30px;
-  justify-content: center;
-}
-input {
-  border-radius: 10px;
-  text-align: center;
-  padding: 10px;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-input.btn.btn-light {
-  margin: 15px;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-div.container.text-center {
-  color: black;
-  background-color: white;
-  position: absolute;
-}
-div#map {
+#map {
   position: absolute;
   left: 0;
   top: 0;
   height: 100%;
   overflow: hidden;
   z-index: 1;
-  width: 100%;
+  width: 130%;
 }
-p#timeDate {
-  color: white;
-  background-color: black;
+#timeDate {
+  color: black;
   font-weight: 500;
   font-size: 20px;
   text-align: center;
+}
+div.container {
+  position: absolute;
+  z-index: 2;
+  top: 70px;
+  left: 70px;
+}
+ul.data {
+  text-align: center;
+  padding: 10px;
+}
+input.city {
+  margin: 20px;
+  font-size: 20px;
+}
+span.units {
+  display: inline-block;
 }
