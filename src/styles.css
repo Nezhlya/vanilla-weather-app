@@ -70,3 +70,7 @@ span.units:hover {
 #list {
   margin: 30px;
 }
+#description {
+  font-size: 20px;
+  font-weight: 500;
+}
