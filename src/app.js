@@ -30,14 +30,17 @@ function enterCity(event) {
   apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
   let nameCity = document.querySelector("li#userCity");
   nameCity.innerHTML = city.charAt(0).toUpperCase() + city.slice(1);
+
   axios.get(apiUrl).then(showWeather);
-  return enterCity;
 }
 
 let form = document.querySelector("#searchCity");
 form.addEventListener("submit", enterCity);
 
 function showWeather(response) {
+  console.log(response);
+  let toMove = document.querySelector("div.container");
+  toMove.style.right = "150px";
   let temp = document.querySelector("#temp");
   let celsius = response.data.main.temp;
   temp.innerHTML = Math.round(celsius);
@@ -52,9 +55,7 @@ function showWeather(response) {
   humidity.innerHTML = `<b>Humidity</b> ${response.data.main.humidity}%`;
 
   let wind = document.querySelector("#wind");
-  wind.innerHTML = `<b>Wind speed</b> ${Math.round(
-    response.data.wind.speed
-  )}km/h`;
+  wind.innerHTML = `<b>Wind speed</b> ${Math.round(response.data.wind.speed)}`;
 
   let weatherIcon = document.querySelector("#icon");
   let iconCode = response.data.weather[0].icon;
@@ -62,9 +63,10 @@ function showWeather(response) {
     "src",
     `http://openweathermap.org/img/wn/${iconCode}@2x.png`
   );
-  weatherIcon.setAttribute("alt", response.data.weather[0].description);
+  weatherIcon.setAttribute("alt", response.data.weather[0].main);
 
   $("span.units").show();
+  $("#units").show();
 
   maptilersdk.config.apiKey = "IIPQdRIn38a0j41VBD8g";
   var map = new maptilersdk.Map({
@@ -90,5 +92,6 @@ function toFahrenheit() {
   apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
   let nameCity = document.querySelector("li#userCity");
   nameCity.innerHTML = city.charAt(0).toUpperCase() + city.slice(1);
+  document.querySelector("#units").innerHTML = "mi/h";
   axios.get(apiUrl).then(showWeather);
 }
