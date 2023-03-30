@@ -55,3 +55,10 @@ span.units:hover {
   align-content: center;
   justify-content: center;
 }
+
+#conditions {
+  font-size: 20px;
+}
+#list {
+  margin: 30px;
+}

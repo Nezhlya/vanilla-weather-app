@@ -38,7 +38,6 @@ let form = document.querySelector("#searchCity");
 form.addEventListener("submit", enterCity);
 
 function showWeather(response) {
-  console.log(response);
   let temp = document.querySelector("#temp");
   let celsius = response.data.main.temp;
   temp.innerHTML = Math.round(celsius);
@@ -48,6 +47,14 @@ function showWeather(response) {
 
   let fahrenheiToc = document.querySelector("#celsius");
   fahrenheiToc.addEventListener("click", enterCity);
+
+  let humidity = document.querySelector("#humidity");
+  humidity.innerHTML = `<b>Humidity</b> ${response.data.main.humidity}%`;
+
+  let wind = document.querySelector("#wind");
+  wind.innerHTML = `<b>Wind speed</b> ${Math.round(
+    response.data.wind.speed
+  )}km/h`;
 
   let weatherIcon = document.querySelector("#icon");
   let iconCode = response.data.weather[0].icon;
@@ -77,8 +84,7 @@ function showWeather(response) {
     });
   });
 }
-function toFahrenheit(event) {
-  event.preventDefault();
+function toFahrenheit() {
   let apiKey = "fda3688b1db05987dd5d07c237aecfba";
   let city = document.querySelector("input.city").value;
   apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
