@@ -31,6 +31,7 @@ function enterCity(event) {
   let nameCity = document.querySelector("li#userCity");
   nameCity.innerHTML = city.charAt(0).toUpperCase() + city.slice(1);
   axios.get(apiUrl).then(showWeather);
+  return enterCity;
 }
 
 let form = document.querySelector("#searchCity");
@@ -58,46 +59,23 @@ function showWeather(response) {
 
   $("span.units").show();
 
-  let map = new ol.Map({
-    layers: [
-      new ol.layer.Tile({
-        source: new ol.source.TileJSON({
-          url: `https://api.maptiler.com/maps/basic-v2/tiles.json?key=IIPQdRIn38a0j41VBD8g`,
-          tileSize: 512,
-        }),
-      }),
-    ],
-    target: `map`,
-    view: new ol.View({
-      center: ol.proj.fromLonLat([
-        response.data.coord.lon,
-        response.data.coord.lat,
-      ]),
-      zoom: 10,
-    }),
+  maptilersdk.config.apiKey = "IIPQdRIn38a0j41VBD8g";
+  var map = new maptilersdk.Map({
+    container: "map",
+    style: maptilersdk.MapStyle.CITIES,
+    center: [response.data.coord.lon, response.data.coord.lat],
+    zoom: 10,
   });
-  let marker = new ol.layer.Vector({
-    source: new ol.source.Vector({
-      features: [
-        new ol.Feature({
-          geometry: new ol.geom.Point(
-            ol.proj.fromLonLat([
-              response.data.coord.lon,
-              response.data.coord.lat,
-            ])
-          ),
+  let marker = new maptilersdk.Marker()
+    .setLngLat([response.data.coord.lon, response.data.coord.lat])
+    .addTo(map);
 
-          anchor: new ol.geom.Point(0, 32),
-        }),
-      ],
-    }),
-    style: new ol.style.Style({
-      image: new ol.style.Icon({
-        src: "https://docs.maptiler.com/openlayers/default-marker/marker-icon.png",
-      }),
-    }),
+  document.getElementById("src").addEventListener("click", function () {
+    map.flyTo({
+      center: [response.data.coord.lon, response.data.coord.lat],
+      essential: true,
+    });
   });
-  map.addLayer(marker);
 }
 function toFahrenheit(event) {
   event.preventDefault();
