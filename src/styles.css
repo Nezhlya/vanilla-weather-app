@@ -30,7 +30,28 @@ input.city {
 }
 span.units {
   display: inline-block;
+  font-size: 30px;
 }
-input#src {
+
+span.units:hover {
+  cursor: pointer;
+}
+#src {
   margin: 20px;
+}
+
+#userCity,
+#temp {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+#icon {
+  width: 100px;
+}
+#searchCity {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
 }
