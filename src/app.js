@@ -40,7 +40,6 @@ form.addEventListener("submit", enterCity);
 function showWeather(response) {
   console.log(response);
   let toMove = document.querySelector("div.container");
-  toMove.style.right = "150px";
   let temp = document.querySelector("#temp");
   let celsius = response.data.main.temp;
   temp.innerHTML = Math.round(celsius);
@@ -76,8 +75,9 @@ function showWeather(response) {
     container: "map",
     style: maptilersdk.MapStyle.CITIES,
     center: [response.data.coord.lon, response.data.coord.lat],
-    zoom: 10,
+    zoom: 8,
   });
+
   let marker = new maptilersdk.Marker()
     .setLngLat([response.data.coord.lon, response.data.coord.lat])
     .addTo(map);

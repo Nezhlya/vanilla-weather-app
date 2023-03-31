@@ -5,7 +5,7 @@
   height: 100%;
   overflow: hidden;
   z-index: 1;
-  width: 130%;
+  width: 100%;
 }
 #timeDate {
   color: black;
@@ -13,10 +13,9 @@
   font-size: 20px;
   text-align: center;
 }
+
 div.container {
   position: absolute;
-  margin-left: auto;
-  margin-right: auto;
   left: 0;
   right: 0;
   text-align: center;

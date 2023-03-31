@@ -28,7 +28,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="card" style="width: 18rem">
+      <div class="card" style="width: 18rem" id="today">
         <div class="card-header">
           <p id="timeDate"></p>
         </div>
@@ -64,6 +64,16 @@
                 <span id="units" style="display: none">km/h</span>
               </div>
             </div>
+          </li>
+        </ul>
+      </div>
+      <div class="card" style="width: 18rem" id="forecast">
+        <div class="card-header">Weekly forecast</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" id="day">An item</li>
+          <li class="list-group-item" id="icon-forecast">A second item</li>
+          <li class="list-group-item" id="tomorrow">
+            <span id="high">10&deg;</span><span id="low">/8&deg;</span>
           </li>
         </ul>
       </div>
