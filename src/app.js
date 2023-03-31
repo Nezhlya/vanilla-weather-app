@@ -22,7 +22,23 @@ if (minutes < 10) {
 }
 
 p.innerHTML = `${day}, ${hour}:${minutes}`;
+function showForecast() {
+  days = ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu"];
+  let forecast = document.querySelector("#forecast");
+  let forecastHTML = ` <div class="row row-cols-3" id="head">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `   <div class="col">${day}</div>
+          <div class="col">🌦</div>
+          <div class="col"><span id="high">6°</span><span id="low">5°</span></div>  
+      `;
+  });
 
+  forecast.innerHTML = forecastHTML;
+
+  forecastHTML = forecastHTML + `</div>`;
+}
 function enterCity(event) {
   event.preventDefault();
   let apiKey = "fda3688b1db05987dd5d07c237aecfba";
@@ -30,7 +46,6 @@ function enterCity(event) {
   apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
   let nameCity = document.querySelector("li#userCity");
   nameCity.innerHTML = city.charAt(0).toUpperCase() + city.slice(1);
-
   axios.get(apiUrl).then(showWeather);
 }
 
@@ -39,7 +54,13 @@ form.addEventListener("submit", enterCity);
 
 function showWeather(response) {
   console.log(response);
-  let toMove = document.querySelector("div.container");
+  showForecast();
+  let card = document.querySelector("div.container").style;
+
+  card.position = "absolute";
+
+  card.right = "50%";
+
   let temp = document.querySelector("#temp");
   let celsius = response.data.main.temp;
   temp.innerHTML = Math.round(celsius);

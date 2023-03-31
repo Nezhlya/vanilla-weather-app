@@ -73,3 +73,7 @@ span.units:hover {
   font-size: 20px;
   font-weight: 500;
 }
+#forecast {
+  background-color: white;
+}
+
