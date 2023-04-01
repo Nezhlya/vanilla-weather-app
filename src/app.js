@@ -22,22 +22,43 @@ if (minutes < 10) {
 }
 
 p.innerHTML = `${day}, ${hour}:${minutes}`;
-function showForecast() {
-  days = ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu"];
+function showWeekdays(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+function showForecast(response) {
+  console.log(response);
+  let forecastDaily = response.data.daily;
   let forecast = document.querySelector("#forecast");
   let forecastHTML = ` <div class="row row-cols-3" id="head">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `   <div class="col">${day}</div>
-          <div class="col">🌦</div>
-          <div class="col"><span id="high">6°</span><span id="low">5°</span></div>  
-      `;
+  forecastDaily.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `   <div class="col">${showWeekdays(forecastDay.dt)}</div>
+    <div class="col"> <img
+          src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
+          alt=""
+          width="42"
+        /></div>
+  <div class="col"><span id="high">${Math.round(
+    forecastDay.temp.max
+  )}°  </span><span id="low">${Math.round(forecastDay.temp.min)}°</span></div>
+    `;
+    }
   });
-
   forecast.innerHTML = forecastHTML;
-
   forecastHTML = forecastHTML + `</div>`;
+}
+
+function getForecast(coordinates) {
+  let apiKey = "fda3688b1db05987dd5d07c237aecfba";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showForecast);
 }
 function enterCity(event) {
   event.preventDefault();
@@ -53,8 +74,6 @@ let form = document.querySelector("#searchCity");
 form.addEventListener("submit", enterCity);
 
 function showWeather(response) {
-  console.log(response);
-  showForecast();
   let card = document.querySelector("div.container").style;
 
   card.position = "absolute";
@@ -109,6 +128,8 @@ function showWeather(response) {
       essential: true,
     });
   });
+
+  getForecast(response.data.coord);
 }
 function toFahrenheit() {
   let apiKey = "fda3688b1db05987dd5d07c237aecfba";

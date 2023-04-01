@@ -19,9 +19,11 @@ div.container {
   left: 0;
   right: 0;
   text-align: center;
-  max-width: fit-content;
+  width: fit-content;
   top: 80px;
   z-index: 2;
+  opacity: 85%;
+  background-color: black;
 }
 
 ul.data {
@@ -73,7 +75,14 @@ span.units:hover {
   font-size: 20px;
   font-weight: 500;
 }
-#forecast {
-  background-color: white;
-}
 
+#low {
+  opacity: 60%;
+}
+#high {
+  font-weight: 500;
+}
+#today {
+  background-color: black;
+  color: white;
+}
