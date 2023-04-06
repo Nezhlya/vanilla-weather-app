@@ -37,7 +37,7 @@ function showForecast(response) {
     if (index < 6) {
       forecastHTML =
         forecastHTML +
-        `   <div class="col">${showWeekdays(forecastDay.dt)}</div>
+        ` <div class="col">${showWeekdays(forecastDay.dt)}</div>
     <div class="col"> <img
           src="http://openweathermap.org/img/wn/${
             forecastDay.weather[0].icon
@@ -65,7 +65,7 @@ function enterCity(event) {
   let apiKey = "fda3688b1db05987dd5d07c237aecfba";
   let city = document.querySelector("input.city").value;
   apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
-  let nameCity = document.querySelector("li#userCity");
+  let nameCity = document.querySelector("#userCity");
   nameCity.innerHTML = city.charAt(0).toUpperCase() + city.slice(1);
   axios.get(apiUrl).then(showWeather);
 }
@@ -74,12 +74,27 @@ let form = document.querySelector("#searchCity");
 form.addEventListener("submit", enterCity);
 
 function showWeather(response) {
+  console.log(response);
   let card = document.querySelector("div.container").style;
-
   card.position = "absolute";
-
   card.right = "50%";
-
+  card.display = "grid";
+  card.gridTemplateColumns = "50% 50% 50% 50%";
+  card.gridTemplateAreas = `"header header header header"
+    "main1 . . main2"
+    "footer footer footer footer"`;
+  let header = document.querySelector("div.card-header").style;
+  header.gridArea = "header";
+  header.backgroundColor = "black";
+  header.padding = "20px 40px";
+  header.borderRadius = " 10px ";
+  let main = document.querySelector("#today").style;
+  main.gridArea = "main1";
+  let footer = document.querySelector("div.coder");
+  footer.innerHTML = "Coded by Nezhlya Emin";
+  footer.style.gridArea = "footer";
+  let forecast = document.querySelector("#forecast").style;
+  forecast.gridArea = "main2";
   let temp = document.querySelector("#temp");
   let celsius = response.data.main.temp;
   temp.innerHTML = Math.round(celsius);
@@ -135,7 +150,7 @@ function toFahrenheit() {
   let apiKey = "fda3688b1db05987dd5d07c237aecfba";
   let city = document.querySelector("input.city").value;
   apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
-  let nameCity = document.querySelector("li#userCity");
+  let nameCity = document.querySelector("#userCity");
   nameCity.innerHTML = city.charAt(0).toUpperCase() + city.slice(1);
   document.querySelector("#units").innerHTML = "mi/h";
   axios.get(apiUrl).then(showWeather);

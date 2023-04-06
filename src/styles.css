@@ -1,3 +1,7 @@
+body {
+  background-color: black;
+  overflow: hidden;
+}
 #map {
   position: absolute;
   left: 0;
@@ -8,7 +12,7 @@
   width: 100%;
 }
 #timeDate {
-  color: black;
+  color: white;
   font-weight: 500;
   font-size: 20px;
   text-align: center;
@@ -19,19 +23,13 @@ div.container {
   left: 0;
   right: 0;
   text-align: center;
-  width: fit-content;
-  top: 80px;
+  width: auto;
   z-index: 2;
   opacity: 85%;
-  background-color: black;
+  display: grid;
+  justify-items: center;
 }
 
-ul.data {
-  display: block;
-  text-align: center;
-  padding: 10px;
-  margin: 10px;
-}
 input.city {
   font-size: 20px;
 }
@@ -60,9 +58,10 @@ span.units:hover {
 }
 #searchCity {
   display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
 }
 
 #conditions {
@@ -85,4 +84,14 @@ span.units:hover {
 #today {
   background-color: black;
   color: white;
+  margin-bottom: 1 rem;
+  padding: 10px;
+}
+input.city {
+  text-align: center;
+}
+#forecast {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 0;
 }
