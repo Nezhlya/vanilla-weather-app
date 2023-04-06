@@ -1,6 +1,7 @@
 body {
-  background-color: black;
-  overflow: hidden;
+  background-image: url("people.jpg");
+  background-repeat: no-repeat;
+  background-position-x: center;
 }
 #map {
   position: absolute;
@@ -23,12 +24,12 @@ div.container {
   left: 0;
   right: 0;
   text-align: center;
-  width: auto;
   z-index: 2;
   opacity: 85%;
-  display: grid;
-  justify-items: center;
+  justify-content: center;
   top: 20px;
+  display: grid;
+  justify-items: stretch;
 }
 
 input.city {
@@ -90,6 +91,8 @@ input.city {
 }
 a {
   color: white;
+  font-size: 14px;
+  font-weight: 100;
 }
 a:hover {
   color: rgb(234, 129, 95);

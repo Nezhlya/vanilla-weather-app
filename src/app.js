@@ -78,6 +78,7 @@ function showWeather(response) {
   let card = document.querySelector("div.container").style;
   card.position = "absolute";
   card.display = "grid";
+  card.justifyItems = "center";
   card.gridTemplateAreas = `"header header header header"
     "main1 . . main2"`;
   let header = document.querySelector("#header").style;
@@ -150,16 +151,3 @@ function toFahrenheit() {
   document.querySelector("#units").innerHTML = "mi/h";
   axios.get(apiUrl).then(showWeather);
 }
-
-let currentLocation = document.querySelector(
-  "button.maplibregl-ctrl-geolocate"
-);
-currentLocation.addEventListener("click", () => {
-  navigator.geolocation.getCurrentPosition((position) => {
-    let lat = position.coords.latitude;
-    let lon = position.coords.longitude;
-    let apiKey = "fda3688b1db05987dd5d07c237aecfba";
-    apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
-    axios.get(apiUrl).then(showWeather);
-  });
-});
