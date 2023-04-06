@@ -28,44 +28,55 @@
   </head>
   <body>
     <div class="container">
-      <div class="card" id="today">
-        <div id="userCity"></div>
-        <div id="list">
-          <div id="iconWeather">
-            <img id="icon" src="" alt="" />
-          </div>
-          <span id="temp"><b></b></span>
-          <span class="units" style="display: none">
-            <span id="celsius"><sup>℃/</sup></span
-            ><span id="fahrenheit"><sup>℉</sup></span>
-          </span>
-          <p id="description"></p>
-        </div>
-        <div id="conditions">
-          <div class="row">
-            <div class="col" id="humidity"></div>
-            <div class="col">
-              <span id="wind"></span>
-              <span id="units" style="display: none">km/h</span>
+      <div class="card text-bg-dark mb-3" style="max-width: 18rem" id="today">
+        <div class="card-header" id="userCity"></div>
+        <div class="card-body">
+          <h5 class="card-title" id="list">
+            <div id="iconWeather">
+              <img id="icon" src="" alt="" />
+            </div>
+            <span id="temp"><b></b></span>
+            <span class="units" style="display: none">
+              <span id="celsius"><sup>℃/</sup></span
+              ><span id="fahrenheit"><sup>℉</sup></span>
+            </span>
+            <p id="description"></p>
+          </h5>
+          <p class="card-text"></p>
+          <div id="conditions">
+            <div class="row">
+              <div class="col" id="humidity"></div>
+              <div class="col">
+                <span id="wind"></span>
+                <span id="units" style="display: none">km/h</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="card-header">
-        <p id="timeDate"></p>
-        <div class="data">
-          <form id="searchCity">
-            <input type="text" placeholder="Enter city name" class="city" />
-            <input type="submit" value="Search" class="btn btn-dark" id="src" />
-          </form>
+      <div class="card text-bg-dark mb-3" style="max-width: 18rem" id="header">
+        <div class="card-header" id="timeDate"></div>
+        <div class="card-body">
+          <h5 class="card-title">
+            <form id="searchCity">
+              <input type="text" placeholder="Enter city name" class="city" />
+              <input
+                type="submit"
+                value="Search"
+                class="btn btn-dark"
+                id="src"
+              />
+            </form>
+          </h5>
+          <p class="card-text">Coded by Nezhlya Emin</p>
         </div>
       </div>
+
       <div
         class="card text-bg-dark mb-3"
         style="max-width: 18rem"
         id="forecast"
       ></div>
-      <div class="coder"></div>
     </div>
     <div id="map"></div>
 

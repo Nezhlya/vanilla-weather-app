@@ -28,6 +28,7 @@ div.container {
   opacity: 85%;
   display: grid;
   justify-items: center;
+  top: 20px;
 }
 
 input.city {
@@ -81,17 +82,11 @@ span.units:hover {
 #high {
   font-weight: 500;
 }
-#today {
-  background-color: black;
-  color: white;
-  margin-bottom: 1 rem;
-  padding: 10px;
-}
+
 input.city {
   text-align: center;
 }
 #forecast {
   display: flex;
   justify-content: space-around;
-  margin-top: 0;
 }

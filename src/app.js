@@ -10,7 +10,7 @@ let days = [
   "Saturday",
 ];
 
-let p = document.querySelector("p#timeDate");
+let p = document.querySelector("#timeDate");
 let day = days[currentDate.getDay()];
 let hour = currentDate.getHours();
 if (hour < 10) {
@@ -77,22 +77,17 @@ function showWeather(response) {
   console.log(response);
   let card = document.querySelector("div.container").style;
   card.position = "absolute";
-  card.right = "50%";
   card.display = "grid";
-  card.gridTemplateColumns = "50% 50% 50% 50%";
   card.gridTemplateAreas = `"header header header header"
-    "main1 . . main2"
-    "footer footer footer footer"`;
-  let header = document.querySelector("div.card-header").style;
+    "main1 . . main2"`;
+  let header = document.querySelector("#header").style;
   header.gridArea = "header";
   header.backgroundColor = "black";
   header.padding = "20px 40px";
   header.borderRadius = " 10px ";
   let main = document.querySelector("#today").style;
   main.gridArea = "main1";
-  let footer = document.querySelector("div.coder");
-  footer.innerHTML = "Coded by Nezhlya Emin";
-  footer.style.gridArea = "footer";
+
   let forecast = document.querySelector("#forecast").style;
   forecast.gridArea = "main2";
   let temp = document.querySelector("#temp");
@@ -130,7 +125,7 @@ function showWeather(response) {
     container: "map",
     style: maptilersdk.MapStyle.CITIES,
     center: [response.data.coord.lon, response.data.coord.lat],
-    zoom: 8,
+    zoom: 7,
   });
 
   let marker = new maptilersdk.Marker()
