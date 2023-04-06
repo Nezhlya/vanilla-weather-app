@@ -90,3 +90,9 @@ input.city {
   display: flex;
   justify-content: space-around;
 }
+a {
+  color: white;
+}
+a:hover {
+  color: rgb(234, 129, 95);
+}
