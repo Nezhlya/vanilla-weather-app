@@ -79,6 +79,7 @@ function showWeather(response) {
   card.position = "absolute";
   card.display = "grid";
   card.justifyItems = "center";
+  card.justifyContent = "space-evenly";
   card.gridTemplateAreas = `"header header header header"
     "main1 . . main2"`;
   let header = document.querySelector("#header").style;

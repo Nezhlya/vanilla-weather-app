@@ -30,6 +30,7 @@ div.container {
   top: 20px;
   display: grid;
   justify-items: stretch;
+  
 }
 
 input.city {
