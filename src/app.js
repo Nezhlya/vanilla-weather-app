@@ -25,9 +25,10 @@ p.innerHTML = `${day}, ${hour}:${minutes}`;
 function showWeekdays(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   return days[day];
 }
+
 function showForecast(response) {
   console.log(response);
   let forecastDaily = response.data.daily;
@@ -74,7 +75,6 @@ let form = document.querySelector("#searchCity");
 form.addEventListener("submit", enterCity);
 
 function showWeather(response) {
-  console.log(response);
   let card = document.querySelector("div.container").style;
   card.position = "absolute";
   card.display = "grid";
@@ -84,14 +84,13 @@ function showWeather(response) {
     "main1 . . main2"`;
   let header = document.querySelector("#header").style;
   header.gridArea = "header";
-  header.backgroundColor = "black";
-  header.padding = "20px 40px";
-  header.borderRadius = " 10px ";
+
   let main = document.querySelector("#today").style;
   main.gridArea = "main1";
 
   let forecast = document.querySelector("#forecast").style;
   forecast.gridArea = "main2";
+
   let temp = document.querySelector("#temp");
   let celsius = response.data.main.temp;
   temp.innerHTML = Math.round(celsius);
@@ -140,7 +139,6 @@ function showWeather(response) {
       essential: true,
     });
   });
-
   getForecast(response.data.coord);
 }
 function toFahrenheit() {

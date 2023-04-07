@@ -30,7 +30,6 @@ div.container {
   top: 20px;
   display: grid;
   justify-items: stretch;
-  
 }
 
 input.city {
@@ -97,4 +96,9 @@ a {
 }
 a:hover {
   color: rgb(234, 129, 95);
+}
+#header {
+  background-color: black;
+  padding: 20px 40px;
+  border-radius: 10px;
 }
