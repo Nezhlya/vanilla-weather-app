@@ -1,7 +1,8 @@
 body {
-  background-image: url("people.jpg");
+  background-image: url("human.jpg");
   background-repeat: no-repeat;
   background-position-x: center;
+  background-size: cover;
 }
 #map {
   position: absolute;
