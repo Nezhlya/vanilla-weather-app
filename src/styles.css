@@ -1,7 +1,5 @@
 body {
-  background-image: url("human.jpg");
-  background-repeat: no-repeat;
-  background-position-x: center;
+  background-image: url("paper.jpg");
   background-size: cover;
 }
 #map {
