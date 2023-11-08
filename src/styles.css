@@ -27,12 +27,18 @@ div.container {
   text-align: center;
   z-index: 2;
   opacity: 85%;
-  justify-content: center;
+  justify-content: space-evenly;
   top: 20px;
   display: grid;
-  justify-items: stretch;
+  justify-items: center;
+  grid-template-areas: "header header header header"
+    "main1 . . main2"
 }
 
+#today{
+  grid-area: "main1"
+}
+ 
 input.city {
   font-size: 20px;
 }
@@ -89,6 +95,7 @@ input.city {
 #forecast {
   display: flex;
   justify-content: space-around;
+  grid-area: "main2";
 }
 a {
   color: white;
@@ -102,4 +109,5 @@ a:hover {
   background-color: black;
   padding: 20px 40px;
   border-radius: 10px;
+grid-area:"header" ;
 }
