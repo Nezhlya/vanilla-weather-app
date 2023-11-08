@@ -1,3 +1,6 @@
+let apiKey = "b5e7d88b0d219a3822897ddaeda253c9";
+let units = "metric";
+
 let dateElement = document.querySelector("#timeDate");
 let date = moment().format("dddd H:mm");
 dateElement.innerHTML = date;
@@ -36,7 +39,7 @@ function showForecast(response) {
 }
 
 function getForecast(coordinates) {
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showForecast);
 }
 function enterCity(city) {
@@ -95,7 +98,9 @@ function showWeather(response) {
   $("span.units").show();
   $("#units").show();
 
-  maptilersdk.config.apiKey = "IIPQdRIn38a0j41VBD8g";
+  //map
+
+  maptilersdk.config.apiKey = "uWIkkOudLeqGl9dH8rgx";
   var map = new maptilersdk.Map({
     container: "map",
     style: maptilersdk.MapStyle.CITIES,
@@ -126,8 +131,7 @@ function toFahrenheit(event) {
   document.querySelector("#units").innerHTML = "mph";
   units = "imperial";
 }
-let apiKey = "fda3688b1db05987dd5d07c237aecfba";
-let units = "metric";
+
 
 let celsiusTof = document.querySelector("#fahrenheit");
 celsiusTof.addEventListener("click", toFahrenheit);
