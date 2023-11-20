@@ -27,7 +27,7 @@ div.container {
   text-align: center;
   z-index: 2;
   opacity: 85%;
-  justify-content: space-evenly;
+  justify-content: center;
   top: 20px;
   display: grid;
   justify-items: center;
@@ -110,4 +110,7 @@ a:hover {
   padding: 20px 40px;
   border-radius: 10px;
 grid-area:"header" ;
+}
+.hidden {
+  display: none;
 }

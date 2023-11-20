@@ -46,6 +46,8 @@ const enterCity = event => {
   const city = document.querySelector("input.city").value;
   document.querySelector("#userCity").innerHTML = city.charAt(0).toUpperCase() + city.slice(1);
   getWeatherData(city);
+  document.getElementById('header').classList.add('hidden');
+  document.getElementById('today').classList.remove('hidden');
 };
 
 const showWeather = response => {
@@ -110,4 +112,8 @@ document.querySelector("#celsius").addEventListener("click", event => changeUnit
 document.querySelector("#fahrenheit").addEventListener("click", event => changeUnits(event, "imperial"));
 
 
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('forecast').classList.add('hidden');
+  document.getElementById('today').classList.add('hidden');
 
+});
