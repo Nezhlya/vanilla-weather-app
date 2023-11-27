@@ -1,9 +1,11 @@
 
+const apiKeymap = "uWIkkOudLeqGl9dH8rgx"; // MapTiler API key
 const apiKey = "b5e7d88b0d219a3822897ddaeda253c9";
 let units = "metric";
 
 const dateElement = document.querySelector("#timeDate");
 const forecastElement = document.querySelector("#forecast");
+const mapContainer = document.getElementById("map");
 
 const showWeekdays = timestamp => ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][new Date(timestamp * 1000).getDay()];
 
@@ -29,6 +31,59 @@ const showForecast = response => {
 };
 
 
+const showMap = (latitude, longitude) => {
+  maptilersdk.config.apiKey = apiKeymap;
+  const map = new maptilersdk.Map({
+    container: "map",
+    style: maptilersdk.MapStyle.CITIES,
+    center: [longitude, latitude],
+    zoom: 7,
+  });
+
+  const marker = new maptilersdk.Marker().setLngLat([longitude, latitude]).addTo(map);
+};
+
+const getLocation = () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        showMap(latitude, longitude);
+        getWeatherDataByCoords(latitude, longitude);
+      },
+      (error) => {
+        console.error("Error getting location:", error.message);
+      }
+    );
+  } else {
+    console.error("Geolocation is not supported by this browser.");
+  }
+};
+
+const getWeatherDataByCoords = (latitude, longitude) => {
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKeymap}`;
+
+  axios.get(apiUrl).then((response) => {
+    showWeather(response);
+    showForecast(response);
+  });
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+  getLocation();
+  document.getElementById("forecast").classList.add("hidden");
+  document.getElementById("today").classList.remove("hidden");
+});
+
+document.querySelector("#searchCity").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const city = document.querySelector("input.city").value;
+  document.getElementById("userCity").innerHTML = city.charAt(0).toUpperCase() + city.slice(1);
+  getWeatherData(city);
+  document.getElementById("header").classList.add("hidden");
+  document.getElementById("today").classList.remove("hidden");
+});
 
 
 const getWeatherData = city => {
@@ -99,6 +154,7 @@ const showWeather = response => {
   $("span.units").show();
   $("#units").show();
 };
+
 
 const changeUnits = (event, newUnits) => {
   event.preventDefault();

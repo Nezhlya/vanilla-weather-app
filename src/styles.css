@@ -1,9 +1,4 @@
 
-
-body {
-  background-image: url("paper.jpg");
-  background-size: cover;
-}
 #map {
   position: absolute;
   left: 0;
@@ -13,6 +8,7 @@ body {
   z-index: 1;
   width: 100%;
 }
+
 #timeDate {
   color: white;
   font-weight: 500;
@@ -32,26 +28,30 @@ div.container {
   display: grid;
   justify-items: center;
   grid-template-areas: "header header header header"
-    "main1 . . main2"
+    "main1 . . main2";
 }
 
-#today{
-  grid-area: "main1"
+#today {
+  grid-area: main1;
 }
- 
+
 input.city {
   font-size: 20px;
 }
+
 span.units {
   display: inline-block;
   font-size: 30px;
 }
+
 #units {
   display: inline;
 }
+
 span.units:hover {
   cursor: pointer;
 }
+
 #src {
   margin: 20px;
 }
@@ -65,6 +65,7 @@ span.units:hover {
 #icon {
   width: 100px;
 }
+
 #searchCity {
   display: flex;
   flex-wrap: nowrap;
@@ -85,6 +86,7 @@ span.units:hover {
 #low {
   opacity: 60%;
 }
+
 #high {
   font-weight: 500;
 }
@@ -92,25 +94,44 @@ span.units:hover {
 input.city {
   text-align: center;
 }
+
 #forecast {
   display: flex;
   justify-content: space-around;
-  grid-area: "main2";
+  grid-area: main2;
 }
+
 a {
   color: white;
   font-size: 14px;
   font-weight: 100;
 }
+
 a:hover {
   color: rgb(234, 129, 95);
 }
+
 #header {
   background-color: black;
   padding: 20px 40px;
   border-radius: 10px;
-grid-area:"header" ;
+  grid-area: header;
 }
+
 .hidden {
   display: none;
 }
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+  div.container {
+    grid-template-areas: "header" "main1" "main2";
+  }
+
+  #forecast {
+    flex-direction: column;
+  }
+
+}
+
+
